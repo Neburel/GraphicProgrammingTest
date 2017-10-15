@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GraphicObject>
+  <Name>RedRectangle</Name>
+  <Values>
+      <Type>ELLIPSE</Type>
+      <Color>green</Color>
+      <Width>20</Width>
+      <Hight>40</Hight>
+      <StartDirection>Down</StartDirection>
+      <StartPosition>75,200</StartPosition>
+  </Values>
+  
+  
+</GraphicObject>

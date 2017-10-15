@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GraphicObject>
+  <Name>RedRectangle</Name>
+  <Values>
+      <Type>Rectangle</Type>
+      <Color>Red</Color>
+      <Width>50</Width>
+      <Hight>50</Hight>
+      <StartDirection>Down</StartDirection>
+      <StartPosition>100,100</StartPosition>
+  </Values>
+  
+  
+</GraphicObject>
