@@ -7,10 +7,6 @@ using System.Threading.Tasks;
 
 namespace GraphicTestProject
 {
-
-    /// <summary>
-    /// 
-    /// </summary>
     class FPS
     {
         DateTime _lastCheckTime = DateTime.Now;
