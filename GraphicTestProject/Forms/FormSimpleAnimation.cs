@@ -22,8 +22,8 @@ namespace GraphicTestProject
         {
             InitializeComponent();
 
-            formHeight = Size.Height;
-            formWidth = Size.Width;
+            formHeight = this.ClientSize.Height;
+            formWidth = this.ClientSize.Width;
 
             label_SizeFormHigh.Text = formHeight.ToString();
             label_SizeFormWidth.Text = formWidth.ToString();
@@ -50,7 +50,7 @@ namespace GraphicTestProject
             {
                 gobject.moveGraphicObject(formHeight, formWidth);
             }
-            Invalidate();
+            this.Refresh();
         }
         private void FormSimpleAnimation_KeyDown(object sender, KeyEventArgs e)
         {
