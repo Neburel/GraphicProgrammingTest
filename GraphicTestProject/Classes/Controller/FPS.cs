@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace GraphicTestProject
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     class FPS
     {
         DateTime _lastCheckTime = DateTime.Now;
@@ -15,6 +19,7 @@ namespace GraphicTestProject
         {
             Interlocked.Increment(ref _frameCount);
         }
+
         public double GetFps()
         {
             double secondsElapsed = (DateTime.Now - _lastCheckTime).TotalSeconds;
