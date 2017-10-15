@@ -15,36 +15,32 @@ namespace GraphicTestProject
     {
         private List<GraphicObjects> gobjects;
         private GraphicObjects player;
-        private FPS fps;
 
         private int formHeight;
         private int formWidth;
 
+        //Nötige Variablen für FPS funktionalität
+        private FPS fps;
+        private Label fpslbl;
+
         public FormSimpleAnimation(List<GraphicObjects> objects)
         {
-            InitializeComponent();
+            //Set Styles for Painting without "Flackern"
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-
-            formHeight = this.ClientSize.Height;
-            formWidth = this.ClientSize.Width;
-
-            label_SizeFormHigh.Text = formHeight.ToString();
-            label_SizeFormWidth.Text = formWidth.ToString();
-
+            //Initate the Displayed Objects and the Player
             gobjects = new List<GraphicObjects>(objects);
-
-            Timer directionTimer = new Timer();
-            directionTimer.Interval = 1000;
-            directionTimer.Tick += new EventHandler(show_fps);
-            directionTimer.Start();
-
             player = gobjects[0];
             gobjects.RemoveAt(0);
-
-            fps = new FPS();
-
+            //Initialate the Form
+            InitializeComponent();
+            //Führt das SizeChanged Commando Zur Initalisierung der Labels und ihrer Beschriftung durch (ALternative: Labels Direkt Angeben was sie am Anfang machen sollen)
+            //Entfernung des Ursprünglichen Codes zur Verhinderung von Code Duplezierung
+            FormSimpleAnimation_SizeChanged(null, null);
+            //Starte FPS_display
+            fps_display_start(lblFPS);
+            //Random Change the Direction of Objects
             randomDirectionChangeTimerforRandomObject();
         }
         private void FormSpimpleAnimation_Paint(object sender, PaintEventArgs e)
@@ -54,15 +50,6 @@ namespace GraphicTestProject
                 gobject.drawGraphicObject(e.Graphics);
             }
             player.drawGraphicObject(e.Graphics);
-        }
-        private void tmrMoving_Tick(object sender, EventArgs e)
-        {
-            foreach (GraphicObjects gobject in gobjects)
-            {
-                gobject.moveGraphicObject(formHeight, formWidth);
-            }
-            fps.OnMapUpdated();
-            this.Refresh();
         }
         private void FormSimpleAnimation_KeyDown(object sender, KeyEventArgs e)
         {
@@ -91,6 +78,11 @@ namespace GraphicTestProject
             myTimer.Start();
 
         }
+        /// <summary>
+        /// Handles the SizeChanged event of the FormSimpleAnimation control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void FormSimpleAnimation_SizeChanged(object sender, EventArgs e)
         {
             formHeight = this.ClientSize.Height;
@@ -122,10 +114,31 @@ namespace GraphicTestProject
             int countDirections = Enum.GetNames(typeof(Direction)).Length;
             gobjects[objectNumber].MovingDirection = (Direction)rnd1.Next(countDirections); 
         }
-        private void show_fps(object sender, EventArgs e)
+        private void fps_display_start(Label displaylbl)
         {
-            lblFPS.Text = fps.GetFps().ToString();
-        }
+            fpslbl = displaylbl;
+            fps = new FPS();
 
+            Timer directionTimer = new Timer();
+            directionTimer.Interval = 1000;
+            directionTimer.Tick += new EventHandler(fps_display);
+            directionTimer.Start();
+        }
+        private void fps_display(object sender, EventArgs e)
+        {
+            fpslbl.Text = fps.GetFps().ToString();
+        }
+        private void tmrMoving_Tick(object sender, EventArgs e)
+        {
+            foreach (GraphicObjects gobject in gobjects)
+            {
+                gobject.moveGraphicObject(formHeight, formWidth);
+            }
+            if (fps != null)
+            {
+                fps.OnMapUpdated();
+            }
+            this.Refresh();
+        }
     }
 }
