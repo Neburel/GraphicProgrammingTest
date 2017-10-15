@@ -21,6 +21,8 @@ namespace GraphicTestProject
         public FormSimpleAnimation(List<GraphicObjects> objects)
         {
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
             formHeight = this.ClientSize.Height;
             formWidth = this.ClientSize.Width;
@@ -81,8 +83,8 @@ namespace GraphicTestProject
         }
         private void FormSimpleAnimation_SizeChanged(object sender, EventArgs e)
         {
-            formHeight = this.Size.Height;
-            formWidth = this.Size.Width;
+            formHeight = this.ClientSize.Height;
+            formWidth = this.ClientSize.Width;
 
             label_SizeFormHigh.Text = formHeight.ToString();
             label_SizeFormWidth.Text = formWidth.ToString();
