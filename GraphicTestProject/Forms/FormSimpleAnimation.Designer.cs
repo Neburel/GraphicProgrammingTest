@@ -28,35 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_yPos = new System.Windows.Forms.Label();
-            this.label_xPos = new System.Windows.Forms.Label();
+            this.lblFPS = new System.Windows.Forms.Label();
             this.label_SizeFormWidth = new System.Windows.Forms.Label();
             this.label_SizeFormHigh = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.FormGrößeWidth = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label_yPos
+            // lblFPS
             // 
-            this.label_yPos.AutoSize = true;
-            this.label_yPos.Location = new System.Drawing.Point(86, 32);
-            this.label_yPos.Name = "label_yPos";
-            this.label_yPos.Size = new System.Drawing.Size(35, 13);
-            this.label_yPos.TabIndex = 0;
-            this.label_yPos.Text = "label1";
-            this.label_yPos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_xPos
-            // 
-            this.label_xPos.AutoSize = true;
-            this.label_xPos.Location = new System.Drawing.Point(12, 32);
-            this.label_xPos.Name = "label_xPos";
-            this.label_xPos.Size = new System.Drawing.Size(35, 13);
-            this.label_xPos.TabIndex = 1;
-            this.label_xPos.Text = "label2";
-            this.label_xPos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFPS.AutoSize = true;
+            this.lblFPS.Location = new System.Drawing.Point(12, 32);
+            this.lblFPS.Name = "lblFPS";
+            this.lblFPS.Size = new System.Drawing.Size(35, 13);
+            this.lblFPS.TabIndex = 1;
+            this.lblFPS.Text = "label2";
+            this.lblFPS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_SizeFormWidth
             // 
@@ -83,20 +71,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "ViereckPosX";
+            this.label1.Text = "FPS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "ViereckPosY";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormGrößeWidth
             // 
@@ -127,11 +105,9 @@
             this.Controls.Add(this.FormGrößeWidth);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label_SizeFormWidth);
             this.Controls.Add(this.label_SizeFormHigh);
-            this.Controls.Add(this.label_xPos);
-            this.Controls.Add(this.label_yPos);
+            this.Controls.Add(this.lblFPS);
             this.MinimumSize = new System.Drawing.Size(850, 600);
             this.Name = "FormSimpleAnimation";
             this.Text = "Form1";
@@ -146,13 +122,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label_yPos;
-        private System.Windows.Forms.Label label_xPos;
+        private System.Windows.Forms.Label lblFPS;
         private System.Windows.Forms.Label label_SizeFormWidth;
         private System.Windows.Forms.Label label_SizeFormHigh;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label FormGrößeWidth;
         private System.Windows.Forms.Label label4;
     }

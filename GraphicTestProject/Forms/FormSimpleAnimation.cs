@@ -14,7 +14,9 @@ namespace GraphicTestProject
     public partial class FormSimpleAnimation : Form
     {
         private List<GraphicObjects> gobjects;
-        
+        private GraphicObjects player;
+        private FPS fps;
+
         private int formHeight;
         private int formWidth;
 
@@ -22,6 +24,7 @@ namespace GraphicTestProject
         {
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
             formHeight = this.ClientSize.Height;
@@ -32,10 +35,15 @@ namespace GraphicTestProject
 
             gobjects = new List<GraphicObjects>(objects);
 
-            foreach (GraphicObjects gobject in gobjects)
-            {
-                Console.WriteLine("Hallo");
-            }
+            Timer directionTimer = new Timer();
+            directionTimer.Interval = 1000;
+            directionTimer.Tick += new EventHandler(show_fps);
+            directionTimer.Start();
+
+            player = gobjects[0];
+            gobjects.RemoveAt(0);
+
+            fps = new FPS();
 
             randomDirectionChangeTimerforRandomObject();
         }
@@ -45,6 +53,7 @@ namespace GraphicTestProject
             {
                 gobject.drawGraphicObject(e.Graphics);
             }
+            player.drawGraphicObject(e.Graphics);
         }
         private void tmrMoving_Tick(object sender, EventArgs e)
         {
@@ -52,25 +61,26 @@ namespace GraphicTestProject
             {
                 gobject.moveGraphicObject(formHeight, formWidth);
             }
+            fps.OnMapUpdated();
             this.Refresh();
         }
         private void FormSimpleAnimation_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
-                gobjects[0].MovingDirection = Direction.Left;
+                player.move(-10, 0);
             }
             else if (e.KeyCode == Keys.Right)
             {
-                gobjects[0].MovingDirection = Direction.Right;
+                player.move(+10, 0);
             }
             else if (e.KeyCode == Keys.Up)
             {
-                gobjects[0].MovingDirection = Direction.Up;
+                player.move(0, -10);
             }
             else if (e.KeyCode == Keys.Down)
             {
-                gobjects[0].MovingDirection = Direction.Down;
+                player.move(0, +10);
             }
         }
         private void FormSimpleAnimation_Load(object sender, EventArgs e)
@@ -111,6 +121,10 @@ namespace GraphicTestProject
             Random rnd1 = new Random();
             int countDirections = Enum.GetNames(typeof(Direction)).Length;
             gobjects[objectNumber].MovingDirection = (Direction)rnd1.Next(countDirections); 
+        }
+        private void show_fps(object sender, EventArgs e)
+        {
+            lblFPS.Text = fps.GetFps().ToString();
         }
 
     }

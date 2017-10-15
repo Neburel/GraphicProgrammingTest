@@ -84,6 +84,7 @@
     <Compile Include="Classes\LoadGraphicObjectXML.cs" />
     <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\FPS.cs" />
     <EmbeddedResource Include="Forms\FormSimpleAnimation.resx">
       <DependentUpon>FormSimpleAnimation.cs</DependentUpon>
     </EmbeddedResource>
