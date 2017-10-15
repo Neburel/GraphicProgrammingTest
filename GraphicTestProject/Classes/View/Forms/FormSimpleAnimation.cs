@@ -8,16 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using GraphicTestProject.Classes.Data;
 
 namespace GraphicTestProject
 {
     public partial class FormSimpleAnimation : Form
     {
+        // TODO: Verwaltungsklasse
+
+        // Grafikobjekte
         private List<GraphicObjects> gobjects;
-        private GraphicObjects player;
+        private GraphicObjects player_graph; // -> Graf. Darst. des Spielers, sollte übrig bleiben wenn Verwaltungsklasse erstellt wird
 
         private int formHeight;
         private int formWidth;
+
+        // Datenobjekte
+        private Player player_obj; // -> Verschwindet später in Verwaltungsklasse
 
         //Nötige Variablen für FPS funktionalität
         private FPS fps;
@@ -31,7 +38,7 @@ namespace GraphicTestProject
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             //Initate the Displayed Objects and the Player
             gobjects = new List<GraphicObjects>(objects);
-            player = gobjects[0];
+            player_graph = gobjects[0];
             gobjects.RemoveAt(0);
             //Initialate the Form
             InitializeComponent();
@@ -42,6 +49,10 @@ namespace GraphicTestProject
             fps_display_start(lblFPS);
             //Random Change the Direction of Objects
             randomDirectionChangeTimerforRandomObject();
+
+            // Datenobjekte initialisieren
+            player_obj = new Player(0, "Spieler");
+            writePlayerHp(player_obj.Hp);
         }
         private void FormSpimpleAnimation_Paint(object sender, PaintEventArgs e)
         {
@@ -49,27 +60,37 @@ namespace GraphicTestProject
             {
                 gobject.drawGraphicObject(e.Graphics);
             }
-            player.drawGraphicObject(e.Graphics);
+            player_graph.drawGraphicObject(e.Graphics);
         }
         private void FormSimpleAnimation_KeyDown(object sender, KeyEventArgs e)
         {
+            // Test: Spieler verliert HP beim bewegen
             if (e.KeyCode == Keys.Left)
             {
-                player.move(-10, 0);
+                loseHp();
+                player_graph.move(-10, 0);
             }
             else if (e.KeyCode == Keys.Right)
             {
-                player.move(+10, 0);
+                loseHp();
+                player_graph.move(+10, 0);
             }
             else if (e.KeyCode == Keys.Up)
             {
-                player.move(0, -10);
+                loseHp();
+                player_graph.move(0, -10);
             }
             else if (e.KeyCode == Keys.Down)
             {
-                player.move(0, +10);
+                loseHp();
+                player_graph.move(0, +10);
             }
         }
+        private void loseHp()
+        {
+            player_obj.Hp = player_obj.Hp - 1;
+        }
+
         private void FormSimpleAnimation_Load(object sender, EventArgs e)
         {
             Timer myTimer = new Timer();
@@ -138,7 +159,14 @@ namespace GraphicTestProject
             {
                 fps.OnMapUpdated();
             }
+            writePlayerHp(player_obj.Hp);
             this.Refresh();
+        }
+
+        // Public Classes
+        internal void writePlayerHp(int hp)
+        {
+            lbl_playerhp.Text = hp.ToString();
         }
     }
 }

@@ -34,12 +34,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.FormGrößeWidth = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbl_texthp = new System.Windows.Forms.Label();
+            this.lbl_playerhp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblFPS
             // 
             this.lblFPS.AutoSize = true;
-            this.lblFPS.Location = new System.Drawing.Point(12, 32);
+            this.lblFPS.Location = new System.Drawing.Point(12, 542);
             this.lblFPS.Name = "lblFPS";
             this.lblFPS.Size = new System.Drawing.Size(35, 13);
             this.lblFPS.TabIndex = 1;
@@ -69,7 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 519);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 5;
@@ -96,12 +98,32 @@
             this.label4.Text = "FormGrößeHeight";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lbl_texthp
+            // 
+            this.lbl_texthp.AutoSize = true;
+            this.lbl_texthp.Location = new System.Drawing.Point(12, 9);
+            this.lbl_texthp.Name = "lbl_texthp";
+            this.lbl_texthp.Size = new System.Drawing.Size(54, 13);
+            this.lbl_texthp.TabIndex = 8;
+            this.lbl_texthp.Text = "Player HP";
+            // 
+            // lbl_playerhp
+            // 
+            this.lbl_playerhp.AutoSize = true;
+            this.lbl_playerhp.Location = new System.Drawing.Point(15, 32);
+            this.lbl_playerhp.Name = "lbl_playerhp";
+            this.lbl_playerhp.Size = new System.Drawing.Size(13, 13);
+            this.lbl_playerhp.TabIndex = 9;
+            this.lbl_playerhp.Text = "0";
+            // 
             // FormSimpleAnimation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(834, 562);
+            this.Controls.Add(this.lbl_playerhp);
+            this.Controls.Add(this.lbl_texthp);
             this.Controls.Add(this.FormGrößeWidth);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -128,5 +150,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label FormGrößeWidth;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_texthp;
+        private System.Windows.Forms.Label lbl_playerhp;
     }
 }

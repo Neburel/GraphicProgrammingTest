@@ -46,7 +46,7 @@ namespace GraphicTestProject
         private Error getFilestoLoad()
         {
             String directoryPath = Directory.GetCurrentDirectory();
-            String destinationPath = @"Ressouces\GraphicObjects"; ;
+            String destinationPath = @"Ressources\GraphicObjects"; ;
             String completePath = Path.Combine(directoryPath, destinationPath);
 
             DirectoryInfo graphicObjectsDirectory = new DirectoryInfo(completePath);

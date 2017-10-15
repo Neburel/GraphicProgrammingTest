@@ -66,29 +66,32 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\GraphicObjects\GraphicObjectEllipse.cs" />
-    <Compile Include="Classes\GraphicObjects\GraphicObjectRectangle.cs" />
-    <Compile Include="Classes\GraphicObjects\GraphicObjects.cs" />
-    <Compile Include="Forms\FormSimpleAnimation.cs">
+    <Compile Include="Classes\Data\Entity.cs" />
+    <Compile Include="Classes\Data\Item.cs" />
+    <Compile Include="Classes\Data\Player.cs" />
+    <Compile Include="Classes\View\GraphicObjects\GraphicObjectEllipse.cs" />
+    <Compile Include="Classes\View\GraphicObjects\GraphicObjectRectangle.cs" />
+    <Compile Include="Classes\View\GraphicObjects\GraphicObjects.cs" />
+    <Compile Include="Classes\View\Forms\FormSimpleAnimation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormSimpleAnimation.Designer.cs">
+    <Compile Include="Classes\View\Forms\FormSimpleAnimation.Designer.cs">
       <DependentUpon>FormSimpleAnimation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormTestPaintEvent.cs">
+    <Compile Include="Classes\View\Forms\FormTestPaintEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormTestPaintEvent.Designer.cs">
+    <Compile Include="Classes\View\Forms\FormTestPaintEvent.Designer.cs">
       <DependentUpon>FormTestPaintEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\LoadGraphicObjectXML.cs" />
-    <Compile Include="Classes\Program.cs" />
+    <Compile Include="Classes\Util\LoadGraphicObjectXML.cs" />
+    <Compile Include="Classes\Util\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\FPS.cs" />
-    <EmbeddedResource Include="Forms\FormSimpleAnimation.resx">
+    <Compile Include="Classes\Controller\FPS.cs" />
+    <EmbeddedResource Include="Classes\View\Forms\FormSimpleAnimation.resx">
       <DependentUpon>FormSimpleAnimation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormTestPaintEvent.resx">
+    <EmbeddedResource Include="Classes\View\Forms\FormTestPaintEvent.resx">
       <DependentUpon>FormTestPaintEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,15 +133,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ressouces\GraphicObjects\EllipseGrün.xml">
+    <Content Include="Ressources\GraphicObjects\EllipseGrün.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Ressouces\GraphicObjects\ViereckBlau.xml">
+    <Content Include="Ressources\GraphicObjects\ViereckBlau.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Ressouces\GraphicObjects\ViereckRot.xml">
+    <Content Include="Ressources\GraphicObjects\ViereckRot.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
